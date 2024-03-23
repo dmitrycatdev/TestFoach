@@ -29,7 +29,7 @@ const Tabs = () => {
 };
 
 const Router = () => {
-    const renderFirstScreenDetails = (props: any) => <FirstDetailScreen {...props}/>;
+    const RenderFirstScreenDetails = (props: any) => <FirstDetailScreen {...props}/>;
     return (
         <RootStack.Navigator>
             <RootStack.Screen 
@@ -41,7 +41,7 @@ const Router = () => {
             />
             <RootStack.Screen 
                 name={AppRouteNames.FirstDetail} 
-                component={renderFirstScreenDetails}                
+                component={RenderFirstScreenDetails}                
             />
             
         </RootStack.Navigator>

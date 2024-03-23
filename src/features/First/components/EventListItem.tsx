@@ -8,7 +8,8 @@ const Avatar = styled.Image`
     height: ${50}px;
     width: ${50}px;
     border-radius: ${100}px;
-    border: 1px solid black;
+    border-width: ${1}px;
+    border-color: black;
     margin-right: ${20}px;
 `;
 
@@ -24,12 +25,12 @@ const SubText = styled.Text`
     font-size: ${10}px;
 `;
 
-type ListProps = {
+type EventListItemProps = {
     item: GitHubListItem,
     onPress: (item: GitHubListItem) => void
 }
 
-const ListItem: FC<ListProps> = ({ item, onPress }) => {
+const EventListItem: FC<EventListItemProps> = ({ item, onPress }) => {    
     const handlePress = () => {
         onPress(item); 
     };
@@ -47,4 +48,13 @@ const ListItem: FC<ListProps> = ({ item, onPress }) => {
     );
 };
 
-export default React.memo(ListItem);
+function isEqual(prevProps: EventListItemProps, nextProps: EventListItemProps) {
+    return (
+        prevProps.item.id === nextProps.item.id 
+        && prevProps.item.actor.avatar_url === nextProps.item.actor.avatar_url 
+        && prevProps.item.actor.display_login === nextProps.item.actor.display_login 
+
+    );
+}
+
+export default React.memo(EventListItem, isEqual);

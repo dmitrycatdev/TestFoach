@@ -8,7 +8,6 @@ export const FlexCenterView = styled.View`
 
 export const ScreenCenterView = styled(FlexCenterView)`
     flex: 1;
-    background-color: lightgray;
 `;
 
 export const ErrorText = styled.Text`

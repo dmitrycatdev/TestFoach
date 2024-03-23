@@ -6,6 +6,8 @@ const DEFAULT_PARAMS: ListRequestParams = {
     page:     1,
 };
 
+let count = 0;
+
 export const api = createApi({
     reducerPath: "api",
     baseQuery:   fetchBaseQuery({
@@ -19,8 +21,15 @@ export const api = createApi({
                     params: DEFAULT_PARAMS,
                 };
             },
+            transformResponse(response: GitHubListItem[]) {
+                console.log("getGitHubList requests count:", ++count);
+                return response;
+            },
         }),
     }),
 });
 
-export const { useLazyGetGitHubListQuery } = api;
+export const { 
+    useGetGitHubListQuery, 
+    useLazyGetGitHubListQuery, 
+} = api;

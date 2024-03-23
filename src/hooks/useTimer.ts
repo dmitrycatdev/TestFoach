@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 
 const useTimer = (maxSeconds: number, callback?: () => void) => {
-    const [seconds, setSeconds] = useState(0);
-    const [isActive, setIsActive] = useState(false);
+    const [seconds, setSeconds] = useState(1);
+    const [isActive, setIsActive] = useState(true);
 
     function reset() {
-        setSeconds(0);
+        setSeconds(1);
         setIsActive(true);
     }
 
@@ -19,7 +19,7 @@ const useTimer = (maxSeconds: number, callback?: () => void) => {
             timerId = setInterval(() => {
                 setSeconds((sec) => sec + 1);
             }, 1000);
-        } else if (!isActive && seconds !== 0) {
+        } else if (!isActive && seconds !== 1) {
             clearInterval(timerId);
         }
         return () => clearInterval(timerId);
